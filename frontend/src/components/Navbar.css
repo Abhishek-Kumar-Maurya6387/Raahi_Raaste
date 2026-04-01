@@ -1,0 +1,73 @@
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(237, 232, 223, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(44, 42, 37, 0.1);
+}
+
+.navbar-logo {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.7rem;
+  color: #2c2a25;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #4a4640;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: #8b6914;
+}
+
+.navbar-cta {
+  background: #2c2a25;
+  color: #ede8df;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.navbar-cta:hover {
+  background: #8b6914;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.2rem;
+  }
+  .navbar-links {
+    display: none;
+  }
+}

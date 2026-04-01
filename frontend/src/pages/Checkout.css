@@ -1,0 +1,80 @@
+.checkout-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.checkout-title {
+  font-size: 2.2rem;
+  color: var(--charcoal);
+  margin-bottom: 2rem;
+}
+
+.checkout-card {
+  background: var(--cream-dark);
+  border: 1px solid rgba(44, 42, 37, 0.12);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.checkout-item-name {
+  color: var(--charcoal);
+  font-weight: 400;
+}
+
+.checkout-item-price {
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.checkout-divider {
+  height: 1px;
+  background: rgba(44, 42, 37, 0.1);
+  margin: 1rem 0;
+}
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.checkout-notice {
+  background: rgba(139, 105, 20, 0.08);
+  border-left: 3px solid var(--accent);
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 2px 2px 0;
+}
+
+.checkout-notice p {
+  font-size: 0.86rem;
+  color: var(--charcoal-light);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.checkout-pay-btn {
+  width: 100%;
+  text-align: center;
+  font-size: 0.95rem;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.checkout-note {
+  font-size: 0.75rem;
+  color: rgba(44, 42, 37, 0.4);
+  text-align: center;
+  font-weight: 300;
+}

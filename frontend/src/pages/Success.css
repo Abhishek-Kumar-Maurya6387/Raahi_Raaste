@@ -1,0 +1,70 @@
+.success-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--charcoal);
+  color: var(--cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.5rem;
+}
+
+.success-title {
+  font-size: 2rem;
+  color: var(--charcoal);
+  margin-bottom: 0.8rem;
+}
+
+.success-desc {
+  color: var(--charcoal-light);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.success-box {
+  background: var(--cream-dark);
+  border: 1px solid rgba(44, 42, 37, 0.12);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-box-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.success-box-note {
+  font-size: 0.88rem;
+  color: var(--charcoal-light);
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+
+.success-btn {
+  width: 100%;
+  text-align: center;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success-coming {
+  font-size: 0.75rem;
+  color: rgba(44, 42, 37, 0.4);
+  margin-top: 0.5rem;
+}

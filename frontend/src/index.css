@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #ede8df;
+  --cream-dark: #e0d9ce;
+  --charcoal: #2c2a25;
+  --charcoal-light: #4a4640;
+  --accent: #8b6914;
+  --accent-light: #c4973a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Playfair Display", serif;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Page wrapper — pushes content below fixed navbar */
+.page {
+  padding-top: 5rem;
+  min-height: 100vh;
+}
+
+/* Section label style */
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--charcoal);
+  color: var(--cream);
+  padding: 0.85rem 2.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1.5px solid var(--charcoal);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Jost", sans-serif;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--charcoal);
+  padding: 0.85rem 2.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1.5px solid var(--charcoal);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: "Jost", sans-serif;
+}
+
+.btn-outline:hover {
+  background: var(--cream-dark);
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
