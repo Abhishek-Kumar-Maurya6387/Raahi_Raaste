@@ -1,46 +1,41 @@
 import { useLocation, Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import translations from "../translations";
 import "./Success.css";
 
 function Success() {
   const location = useLocation();
+  const { lang } = useLanguage();
+  const t = (key) => translations[key]?.[lang === "hinglish" ? "hi" : "en"] || translations[key]?.en || key;
   const { pdfUrl, packageName } = location.state || {};
 
   return (
     <div className="page">
       <div className="success-wrap">
         <div className="success-icon">✓</div>
-        <h1 className="success-title">Payment Successful!</h1>
+        <h1 className="success-title">{t("success_title")}</h1>
         <p className="success-desc">
-          Shukriya! <strong>{packageName || "Tumhari itinerary"}</strong> PDF
-          ready hai. Neeche se download karo.
+          {t("success_desc_pre")} <strong>{packageName || "itinerary"}</strong> {t("success_desc_post")}
         </p>
 
         <div className="success-box">
-          <p className="success-box-label">Tumhari PDF Ready Hai</p>
+          <p className="success-box-label">{t("success_box_label")}</p>
           {pdfUrl ? (
-            <a
-              href={pdfUrl}
-              download
-              className="btn-primary success-btn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Download PDF ↓
+            <a href={pdfUrl} download className="btn-primary success-btn" target="_blank" rel="noreferrer">
+              {t("success_download")}
             </a>
           ) : (
             <>
-              <p className="success-box-note">
-                PDF link tumhari email pe bhej di gayi hai. Inbox check karo.
-              </p>
+              <p className="success-box-note">{t("success_email_note")}</p>
               <button className="btn-primary success-btn" disabled>
-                Download PDF ↓
+                {t("success_download")}
               </button>
             </>
           )}
         </div>
 
         <Link to="/packages" className="btn-outline">
-          Aur Routes Dekhein
+          {t("success_more")}
         </Link>
       </div>
     </div>

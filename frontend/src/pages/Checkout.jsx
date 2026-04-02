@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useLanguage } from "../context/LanguageContext";
+import translations from "../translations";
 import config from "../config";
 import "./Checkout.css";
 
@@ -23,6 +25,8 @@ function loadRazorpay() {
 function Checkout() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { lang } = useLanguage();
+  const t = (key) => translations[key]?.[lang === "hinglish" ? "hi" : "en"] || translations[key]?.en || key;
   const pkg = packages[id];
 
   const [email, setEmail] = useState("");
@@ -31,10 +35,9 @@ function Checkout() {
 
   const handlePay = async () => {
     if (!email) {
-      setError("Email daalna zaroori hai — PDF yahan bheja jaayega.");
+      setError(t("checkout_email_error"));
       return;
     }
-
     setError("");
     setLoading(true);
 
@@ -82,11 +85,7 @@ function Checkout() {
         },
         prefill: { email },
         theme: { color: "#2C2A25" },
-        modal: {
-          ondismiss: function () {
-            setLoading(false);
-          },
-        },
+        modal: { ondismiss: () => setLoading(false) },
       };
 
       const razorpayInstance = new window.Razorpay(options);
@@ -102,26 +101,26 @@ function Checkout() {
   return (
     <div className="page">
       <div className="checkout-wrap">
-        <p className="section-label">Order Summary</p>
-        <h1 className="checkout-title">Checkout</h1>
+        <p className="section-label">{t("checkout_label")}</p>
+        <h1 className="checkout-title">{t("checkout_title")}</h1>
 
         <div className="checkout-card">
           <div className="checkout-item">
-            <span className="checkout-item-name">{pkg.title} — PDF Guide</span>
+            <span className="checkout-item-name">{pkg.title} — {t("checkout_pdf")}</span>
             <span className="checkout-item-price">₹{pkg.price}</span>
           </div>
           <div className="checkout-divider" />
           <div className="checkout-total">
-            <span>Total</span>
+            <span>{t("checkout_total")}</span>
             <span>₹{pkg.price}</span>
           </div>
         </div>
 
         <div className="checkout-email">
-          <label>Email — PDF yahan bheja jaayega</label>
+          <label>{t("checkout_email_label")}</label>
           <input
             type="email"
-            placeholder="aapka@email.com"
+            placeholder={t("checkout_email_placeholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -130,10 +129,7 @@ function Checkout() {
         {error && <p className="checkout-error">{error}</p>}
 
         <div className="checkout-notice">
-          <p>
-            Payment ke baad instantly PDF download link milega. UPI, Cards,
-            Net Banking sab accepted.
-          </p>
+          <p>{t("checkout_notice")}</p>
         </div>
 
         <button
@@ -141,10 +137,10 @@ function Checkout() {
           onClick={handlePay}
           disabled={loading}
         >
-          {loading ? "Processing..." : `Pay ₹${pkg.price} via Razorpay →`}
+          {loading ? "Processing..." : `${t("checkout_pay_btn")} ₹${pkg.price}`}
         </button>
 
-        <p className="checkout-note">Secured by Razorpay · 100% Safe</p>
+        <p className="checkout-note">{t("checkout_secure")}</p>
       </div>
     </div>
   );
