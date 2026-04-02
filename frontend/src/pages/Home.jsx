@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import translations from "../translations";
+import LocationSearch from "../components/LocationSearch";
 import "./Home.css";
 
 const destinations = [
@@ -59,7 +60,10 @@ function Home() {
         </div>
       </section>
 
-      {/* Destinations */}
+      {/* Location Search + Top 12 */}
+      <LocationSearch />
+
+      {/* Featured Packages */}
       <section className="destinations">
         <div className="container">
           <p className="section-label">{t("dest_label")}</p>

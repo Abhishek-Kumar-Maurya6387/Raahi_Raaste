@@ -1,0 +1,281 @@
+.ls-wrap {
+  padding: 5rem 0;
+  background: var(--cream-dark);
+}
+
+.ls-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--charcoal);
+  margin-bottom: 2rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+/* ── Search Bar ── */
+.ls-search-wrap {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+}
+
+.ls-search-icon {
+  position: absolute;
+  left: 2.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.ls-search-input {
+  width: 100%;
+  padding: 1rem 3rem 1rem 3rem;
+  font-size: 0.95rem;
+  border: 1.5px solid rgba(44, 42, 37, 0.25);
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: "Jost", sans-serif;
+  outline: none;
+  border-radius: 2px;
+  transition: border-color 0.2s;
+}
+
+.ls-search-input:focus {
+  border-color: var(--charcoal);
+}
+
+.ls-search-input::placeholder {
+  color: rgba(44, 42, 37, 0.38);
+}
+
+.ls-clear {
+  position: absolute;
+  right: 2.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(44, 42, 37, 0.4);
+  font-size: 0.85rem;
+  padding: 0.2rem;
+}
+
+/* Suggestions dropdown */
+.ls-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 2rem;
+  right: 2rem;
+  background: var(--cream);
+  border: 1px solid rgba(44, 42, 37, 0.15);
+  border-top: none;
+  z-index: 100;
+  border-radius: 0 0 2px 2px;
+}
+
+.ls-suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(44, 42, 37, 0.07);
+  transition: background 0.15s;
+}
+
+.ls-suggestion-item:hover {
+  background: var(--cream-dark);
+}
+
+.ls-suggestion-name {
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.ls-suggestion-state {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* ── Grid ── */
+.ls-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Card */
+.ls-card {
+  background: var(--cream);
+  border: 1px solid rgba(44, 42, 37, 0.1);
+  border-radius: 4px;
+  padding: 1.2rem 0.8rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.22s, box-shadow 0.22s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.ls-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(44, 42, 37, 0.1);
+}
+
+.ls-card--available {
+  border-color: rgba(139, 105, 20, 0.25);
+}
+
+.ls-card--soon {
+  opacity: 0.75;
+}
+
+/* Image */
+.ls-img-wrap {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.4rem;
+}
+
+.ls-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(10%) saturate(800%) hue-rotate(10deg) brightness(90%);
+}
+
+.ls-card--available .ls-img {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(10%) saturate(800%) hue-rotate(10deg) brightness(85%);
+}
+
+.ls-card-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-top: 0.2rem;
+  font-family: "Playfair Display", serif;
+}
+
+.ls-card-state {
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Badges */
+.ls-badge {
+  font-size: 0.62rem;
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.ls-badge--available {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+.ls-badge--soon {
+  background: rgba(44, 42, 37, 0.1);
+  color: var(--accent);
+}
+
+/* ── Modal ── */
+.ls-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 42, 37, 0.55);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.ls-modal {
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+
+.ls-modal-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.ls-modal-title {
+  font-size: 1.3rem;
+  color: var(--charcoal);
+  margin-bottom: 0.8rem;
+  font-family: "Playfair Display", serif;
+}
+
+.ls-modal-desc {
+  font-size: 0.9rem;
+  color: var(--charcoal-light);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 1.8rem;
+}
+
+.ls-modal-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.ls-modal-buttons .btn-primary {
+  width: 100%;
+  text-align: center;
+}
+
+.ls-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: rgba(44, 42, 37, 0.45);
+  font-family: "Jost", sans-serif;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+
+.ls-modal-close:hover {
+  color: var(--charcoal);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .ls-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ls-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
