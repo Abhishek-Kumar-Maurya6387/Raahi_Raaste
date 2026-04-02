@@ -38,6 +38,10 @@
   border-radius: 4px;
   padding: 2rem;
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .success-box-label {
@@ -46,25 +50,20 @@
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 600;
-  margin-bottom: 0.5rem;
 }
 
 .success-box-note {
   font-size: 0.88rem;
   color: var(--charcoal-light);
   font-weight: 300;
-  margin-bottom: 1.2rem;
 }
 
 .success-btn {
   width: 100%;
   text-align: center;
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 
-.success-coming {
-  font-size: 0.75rem;
-  color: rgba(44, 42, 37, 0.4);
-  margin-top: 0.5rem;
+.success-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import config from "../config";
 import "./Checkout.css";
 
 const packages = {
@@ -7,17 +10,91 @@ const packages = {
   "rajasthan-royal": { title: "Jaipur · Jodhpur · Jaisalmer", price: 149 },
 };
 
+function loadRazorpay() {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+}
+
 function Checkout() {
   const { id } = useParams();
   const navigate = useNavigate();
   const pkg = packages[id];
 
-  const handlePay = () => {
-    /*
-      Yahan Razorpay code aayega jab backend ready ho.
-      Abhi ke liye Success page pe redirect kar rahe hain.
-    */
-    navigate("/success");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handlePay = async () => {
+    if (!email) {
+      setError("Email daalna zaroori hai — PDF yahan bheja jaayega.");
+      return;
+    }
+
+    setError("");
+    setLoading(true);
+
+    const isLoaded = await loadRazorpay();
+    if (!isLoaded) {
+      setError("Razorpay load nahi hua. Internet check karo.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const { data } = await axios.post(
+        `${config.BACKEND_URL}/api/payment/create-order`,
+        { packageId: id, email }
+      );
+
+      const options = {
+        key: data.keyId,
+        amount: data.amount,
+        currency: data.currency,
+        name: "Raahi Raaste",
+        description: pkg.title,
+        order_id: data.orderId,
+        handler: async function (response) {
+          try {
+            const verify = await axios.post(
+              `${config.BACKEND_URL}/api/payment/verify`,
+              {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }
+            );
+            if (verify.data.success) {
+              navigate("/success", {
+                state: {
+                  pdfUrl: verify.data.pdfUrl,
+                  packageName: verify.data.packageName,
+                },
+              });
+            }
+          } catch (err) {
+            setError("Payment verify karne mein error. Support se contact karo.");
+          }
+        },
+        prefill: { email },
+        theme: { color: "#2C2A25" },
+        modal: {
+          ondismiss: function () {
+            setLoading(false);
+          },
+        },
+      };
+
+      const razorpayInstance = new window.Razorpay(options);
+      razorpayInstance.open();
+    } catch (err) {
+      setError("Kuch gadbad ho gayi. Dobara try karo.");
+      setLoading(false);
+    }
   };
 
   if (!pkg) return null;
@@ -40,20 +117,34 @@ function Checkout() {
           </div>
         </div>
 
+        <div className="checkout-email">
+          <label>Email — PDF yahan bheja jaayega</label>
+          <input
+            type="email"
+            placeholder="aapka@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        {error && <p className="checkout-error">{error}</p>}
+
         <div className="checkout-notice">
           <p>
-            Payment ke baad instantly PDF download link milega. Razorpay se UPI,
-            Cards, Net Banking sab accept hota hai.
+            Payment ke baad instantly PDF download link milega. UPI, Cards,
+            Net Banking sab accepted.
           </p>
         </div>
 
-        <button className="btn-primary checkout-pay-btn" onClick={handlePay}>
-          Pay ₹{pkg.price} via Razorpay →
+        <button
+          className="btn-primary checkout-pay-btn"
+          onClick={handlePay}
+          disabled={loading}
+        >
+          {loading ? "Processing..." : `Pay ₹${pkg.price} via Razorpay →`}
         </button>
 
-        <p className="checkout-note">
-          Abhi Razorpay test mode mein hai — backend connect hone ke baad live hoga.
-        </p>
+        <p className="checkout-note">Secured by Razorpay · 100% Safe</p>
       </div>
     </div>
   );

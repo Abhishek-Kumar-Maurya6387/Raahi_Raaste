@@ -49,6 +49,47 @@
   color: var(--charcoal);
 }
 
+/* Email */
+.checkout-email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-email label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.checkout-email input {
+  background: var(--cream-dark);
+  border: 1px solid rgba(44, 42, 37, 0.15);
+  border-radius: 2px;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  font-family: "Jost", sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.checkout-email input:focus {
+  border-color: var(--accent);
+}
+
+.checkout-error {
+  font-size: 0.85rem;
+  color: #a32d2d;
+  margin-bottom: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  background: #fcebeb;
+  border-radius: 2px;
+}
+
 .checkout-notice {
   background: rgba(139, 105, 20, 0.08);
   border-left: 3px solid var(--accent);
@@ -70,6 +111,11 @@
   font-size: 0.95rem;
   padding: 1rem;
   margin-bottom: 0.8rem;
+}
+
+.checkout-pay-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .checkout-note {
