@@ -18,6 +18,10 @@ const packages = {
     name: "Jaipur · Jodhpur · Jaisalmer",
     price: 149,
   },
+  "haridwar-guide": {
+    name: "Haridwar Complete Guide",
+    price: 9,
+  },
 };
 
 // Razorpay instance
@@ -105,12 +109,12 @@ router.post("/verify", async (req, res) => {
 
     // Payment successful — PDF link bhejo
     // Abhi hardcoded hai — baad mein actual PDF links daalna
-    const pdfLinks = {
-      "uttarakhand-char-dham": "/pdfs/char-dham-itinerary.pdf",
-      "himachal-spiti": "/pdfs/spiti-valley-itinerary.pdf",
-      "rajasthan-royal": "/pdfs/rajasthan-itinerary.pdf",
-    };
-
+ const pdfLinks = {
+  "uttarakhand-char-dham": "/pdfs/char-dham-itinerary.pdf",
+  "himachal-spiti": "/pdfs/spiti-valley-itinerary.pdf",
+  "rajasthan-royal": "/pdfs/rajasthan-itinerary.pdf",
+  "haridwar-guide": "https://drive.google.com/file/d/1ga6-53Gma5Poslru2M6kFJmMQ0fzxINT/view?usp=sharing",
+};
     res.json({
       success: true,
       message: "Payment verified!",

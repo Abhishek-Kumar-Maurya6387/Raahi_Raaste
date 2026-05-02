@@ -10,6 +10,10 @@ const packages = {
   "uttarakhand-char-dham": { title: "Char Dham & Kedarnath", price: 199 },
   "himachal-spiti": { title: "Manali to Spiti Valley", price: 249 },
   "rajasthan-royal": { title: "Jaipur · Jodhpur · Jaisalmer", price: 149 },
+  "haridwar-guide": { 
+  title: "Haridwar — Gateway to God", 
+  price: 9 
+},
 };
 
 function loadRazorpay() {

@@ -35,6 +35,16 @@ const destinations = [
     days: 7,
     color: "#D4B896",
   },
+  {
+  id: "haridwar-guide",
+  region: "Uttarakhand",
+  title: "Haridwar — Gateway to God",
+  desc_en: "Complete guide — sacred ghats, temples, ashrams, hidden gems, food & transport from Delhi.",
+  desc_hi: "Poora guide — sacred ghats, temples, ashrams, hidden gems, khana & Delhi se transport.",
+  price: 149,
+  days: null,
+  color: "#C4B49A",
+},
 ];
 
 function Home() {

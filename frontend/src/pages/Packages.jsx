@@ -41,6 +41,18 @@ const packages = [
     highlights: ["Amber Fort", "Mehrangarh", "Jaisalmer Fort", "Sam Dunes"],
     budget: "₹6,000 – ₹9,000",
   },
+  {
+  id: "haridwar-guide",
+  region: "Uttarakhand",
+  title: "Haridwar — Gateway to God",
+  desc_en: "Complete Haridwar travel guide — ghats, temples, ashrams, hidden gems, food & transport. Everything you need for the perfect Haridwar trip.",
+  desc_hi: "Haridwar ka poora travel guide — ghats, temples, ashrams, hidden gems, khana & transport. Perfect Haridwar trip ke liye sab kuch.",
+  price: 9,
+  days: null,
+  color: "#C4B49A",
+  highlights: ["Har Ki Pauri", "Mansa Devi", "Sapt Rishi", "Hidden Gems"],
+  budget: "₹1,000 – ₹1,500 per day",
+},
 ];
 
 function Packages() {
